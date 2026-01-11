@@ -1,0 +1,23 @@
+cd ~/Go
+cat > render.yaml << 'EOF'
+services:
+  - type: web
+    name: rahl-ai
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      pip install python-dotenv
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: RAHL_TOKEN
+        sync: false
+    autoDeploy: true
+    plan: free
+EOF
+
+# Commit and push to GitHub
+git add render.yaml
+git commit -m "Add Render deployment configuration"
+git push origin main
