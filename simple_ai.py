@@ -11,7 +11,7 @@ class SimpleRahlAI:
         ]
     
     def generate(self, prompt):
-        # Simple AI: picks a relevant response based on prompt
+        
         if "token" in prompt.lower() or "auth" in prompt.lower():
             return "The Rahl token is valid. Authentication successful."
         elif "sovereign" in prompt.lower() or "command" in prompt.lower():
